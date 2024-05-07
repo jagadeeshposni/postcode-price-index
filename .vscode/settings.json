@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/1548647f-017b-401d-bbef-6e35c91a9dea/resourceGroups/rg_ppi/providers/Microsoft.Web/sites/postcode-pi",
+    "appService.deploySubpath": "server"
+}
