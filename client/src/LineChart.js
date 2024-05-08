@@ -10,7 +10,7 @@ const LineChart = ({ postcode }) => {
     setIsLoading(true);
     setError(null);
 
-    fetch(`http://localhost:3001/data`)/*?postcode=${postcode}*/
+    fetch(`http://localhost:5001/data`)/*?postcode=${postcode}*/
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

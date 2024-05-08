@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const cors = require('cors');
 const app = express()
 const PORT = process.env.PORT || 5001
 
@@ -9,8 +10,11 @@ const data = [
     { year: '2018', price: 150 },
     { year: '2019', price: 170 },
     { year: '2020', price: 200 },
+    { year: '2021', price: 22 },
+    { year: '2022', price: 56 },
+    { year: '2023', price: 99 },
   ];
-
+app.use(cors())
 app.use(express.static(path.join(__dirname + "/public")))
 
 
