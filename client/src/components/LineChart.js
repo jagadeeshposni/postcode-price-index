@@ -6,6 +6,7 @@ import 'chartjs-adapter-date-fns';
 Chart.register(...registerables);
 
 const serverUrl = process.env.SERVER_HOST || 'http://localhost:5001';
+console.log('serverUrl:', serverUrl);
 
 // LineChart component
 const LineChart = ({ postcode }) => {
