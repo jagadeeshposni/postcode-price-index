@@ -10,7 +10,7 @@ const LineChart = ({ postcode }) => {
     const [chartData, setChartData] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:5001/data/' + postcode)
+        fetch('/data/' + postcode)
             .then(response => response.json())
             .then(data => {
                 setChartData({
