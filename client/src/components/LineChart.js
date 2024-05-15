@@ -14,11 +14,11 @@ const LineChart = ({ postcode }) => {
             .then(response => response.json())
             .then(data => {
                 setChartData({
-                    labels: data.map(item => item.year),
+                    labels: data.map(item => item.month),
                     datasets: [
                         {
                             label: 'Price',
-                            data: data.map(item => item.price),
+                            data: data.map(item => item.average_price),
                             fill: false,
                             backgroundColor: 'rgb(75, 192, 192)',
                             borderColor: 'rgba(75, 192, 192, 0.2)',

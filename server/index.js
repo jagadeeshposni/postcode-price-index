@@ -1,29 +1,37 @@
 const express = require('express')
 const path = require('path')
 const cors = require('cors');
+const { Pool } = require('pg');
+
 const app = express()
 const PORT = process.env.PORT || 5001
 
-const data = [
-    { year: '2016', price: 100 },
-    { year: '2017', price: 120 },
-    { year: '2018', price: 150 },
-    { year: '2019', price: 170 },
-    { year: '2020', price: 200 },
-    { year: '2021', price: 22 },
-    { year: '2022', price: 56 },
-    { year: '2023', price: 99 },
-  ];
+const pool = new Pool({
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  database: process.env.PGDATABASE,
+  password: process.env.PGPASSWORD,
+  port: process.env.PGPORT,
+});
+
 app.use(cors())
 app.use(express.static(path.join(__dirname + "/public")))
 
 
-app.get('/data/:outcode', (req, res) => {
-    const outcode  = req.params.outcode;
-    console.log('getting data for: ' + outcode);
+app.get('/data/:outcode', async (req, res) => {
+  const outcode = req.params.outcode;
+  console.log('getting data for: ' + outcode);
 
-    res.json(data);
-  });
+  // Query the database
+  const result = await pool.query(`
+      SELECT DATE_TRUNC('month', transfer_date) AS month, AVG(price) AS average_price
+      FROM price_paid_complete
+      WHERE postcode LIKE $1 || '%'
+      GROUP BY month
+      ORDER BY month
+      `, [outcode]);
+  res.json(result.rows);
+});
 
 
 app.listen(PORT)
