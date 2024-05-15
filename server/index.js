@@ -22,6 +22,7 @@ app.get('/data/:outcode', async (req, res) => {
   const outcode = req.params.outcode;
   console.log('getting data for: ' + outcode);
 
+  console.log(process.env.PGUSER);
   // Query the database
   const result = await pool.query(`
       SELECT DATE_TRUNC('month', transfer_date) AS month, AVG(price) AS average_price
