@@ -5,12 +5,14 @@ import 'chartjs-adapter-date-fns';
 
 Chart.register(...registerables);
 
+const serverUrl = process.env.SERVER_HOST || 'http://localhost:5001';
+
 // LineChart component
 const LineChart = ({ postcode }) => {
     const [chartData, setChartData] = useState(null);
 
     useEffect(() => {
-        fetch('/data/' + postcode)
+        fetch(serverUrl + '/data/' + postcode)
             .then(response => response.json())
             .then(data => {
                 setChartData({
