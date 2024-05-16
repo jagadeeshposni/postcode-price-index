@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname + "/public")))
 
 
 app.get('/data/:outcode', async (req, res) => {
-  const outcode = req.params.outcode;
+  const outcode = req.params.outcode.toUpperCase();
   console.log('getting data for: ' + outcode);
 
   console.log(process.env.PGUSER);
