@@ -5,7 +5,7 @@ import 'chartjs-adapter-date-fns';
 
 Chart.register(...registerables);
 
-const serverUrl = process.env.SERVER_HOST || 'http://localhost:5001';
+const serverUrl = 'https://postcode-price-index.up.railway.app';
 console.log('serverUrl:', serverUrl);
 
 // LineChart component
