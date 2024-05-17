@@ -1,5 +1,4 @@
 # Stage 1: Build the React application
-//change the node version to the latest version 
 FROM node:17.0.2 as build
 WORKDIR /app
 COPY ./client/package*.json ./
