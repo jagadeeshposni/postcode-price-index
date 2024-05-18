@@ -21,7 +21,7 @@ const LineChart = ({ postcode }) => {
           labels: data.map((item) => item.month),
           datasets: [
             {
-              label: 'Price',
+              label: 'Average Price',
               data: data.map((item) => item.average_price),
               fill: false,
               backgroundColor: 'rgb(75, 192, 192)',

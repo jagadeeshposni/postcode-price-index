@@ -28,7 +28,7 @@ app.get('/data/:outcode', async (req, res) => {
       SELECT DATE_TRUNC('month', transfer_date) AS month, AVG(price) AS average_price
       FROM price_paid_complete
       WHERE postcode LIKE $1 || '%'
-      AND (property_type = 'D' or property_type = 'S' or property_type = 'T') 
+      AND property_type != 'O'
       GROUP BY month
       ORDER BY month
       `, [outcode]);
